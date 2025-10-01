@@ -6,14 +6,21 @@ const mongoose = require('mongoose');
 app.use(cors());
 app.use(express.json()); 
 
-const userRouter = require('./src/module/services/user');
-
 app.get('/', (req, res) => {
-  console.log("Hello world");
-  res.send("Hello World!");
+res.send("Hello Baby!");
 });
-
+const userRouter = require("./src/module/routes/UserManagment/user")
 app.use('/api/users', userRouter);
+
+const driverRouter = require("./src/module/routes/UserManagment/driver")
+app.use("/api/driver", driverRouter)
+
+const adminRouter = require("./src/module/routes/UserManagment/admin")
+app.use("/api/admin", adminRouter)
+
+const vechileRouter = require("./src/module/routes/vechile/vechile.router")
+app.use("/api/vechile", vechileRouter)
+
 
 const port = 8080;
 
